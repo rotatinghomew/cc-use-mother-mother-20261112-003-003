@@ -1,0 +1,121 @@
+{
+  "declarations": [
+    {
+      "declaration_id": "decl-accept-calendar",
+      "developer_id": "dev.synthetic.publisher",
+      "application_id": "app.synthetic.market",
+      "agent_identity": "agent.synthetic.001",
+      "action": "grant",
+      "scope": {
+        "capabilities": ["calendar.read", "contacts.lookup"],
+        "regions": ["CN"],
+        "version_range": {"minimum": "2.0.0", "maximum": "3.5.0"},
+        "device": {
+          "manufacturers": ["Northstar"],
+          "models": ["N1", "N2"],
+          "os_families": ["AuroraOS"],
+          "min_security_patch": "2026-10-01",
+          "managed_only": true
+        }
+      },
+      "effective_from": "2026-11-01T00:00:00Z",
+      "effective_until": "2027-01-01T00:00:00Z",
+      "priority": 20,
+      "inherited_from": null,
+      "reason": "Synthetic developer consent for calendar and contact capabilities",
+      "issued_at": "2026-10-31T23:55:00Z",
+      "nonce": "synthetic-accept-calendar-v1",
+      "metadata": {"source": "synthetic-acceptance-fixture", "labels": ["local", "synthetic"]}
+    },
+    {
+      "declaration_id": "decl-accept-camera-deny",
+      "developer_id": "dev.synthetic.publisher",
+      "application_id": "app.synthetic.market",
+      "agent_identity": "agent.synthetic.001",
+      "action": "deny",
+      "scope": {
+        "capabilities": ["camera.capture"],
+        "regions": ["CN"],
+        "version_range": {"minimum": "1.0.0", "maximum": "9.0.0"},
+        "device": {
+          "manufacturers": [],
+          "models": [],
+          "os_families": [],
+          "managed_only": false
+        }
+      },
+      "effective_from": "2026-11-01T00:00:00Z",
+      "effective_until": "2027-01-01T00:00:00Z",
+      "priority": 30,
+      "inherited_from": null,
+      "reason": "Synthetic policy denies camera capture",
+      "issued_at": "2026-10-31T23:56:00Z",
+      "nonce": "synthetic-accept-camera-deny-v1",
+      "metadata": {"source": "synthetic-acceptance-fixture", "labels": ["local", "synthetic"]}
+    }
+  ],
+  "requests": [
+    {
+      "request_id": "req-accept-allow",
+      "developer_id": "dev.synthetic.publisher",
+      "application_id": "app.synthetic.market",
+      "application_version": "2.4.0",
+      "agent_identity": "agent.synthetic.001",
+      "capability": "calendar.read",
+      "region": "CN",
+      "requested_at": "2026-11-12T08:00:00Z",
+      "device": {
+        "device_id": "device-synthetic-allow",
+        "manufacturer": "Northstar",
+        "model": "N1",
+        "os_family": "AuroraOS",
+        "security_patch": "2026-11-01",
+        "managed": true
+      },
+      "attributes": {"channel": "synthetic-distribution", "fixture": true}
+    },
+    {
+      "request_id": "req-accept-explicit-deny",
+      "developer_id": "dev.synthetic.publisher",
+      "application_id": "app.synthetic.market",
+      "application_version": "2.4.0",
+      "agent_identity": "agent.synthetic.001",
+      "capability": "camera.capture",
+      "region": "CN",
+      "requested_at": "2026-11-12T08:05:00Z",
+      "device": {
+        "device_id": "device-synthetic-deny",
+        "manufacturer": "Northstar",
+        "model": "N1",
+        "os_family": "AuroraOS",
+        "security_patch": "2026-11-01",
+        "managed": true
+      },
+      "attributes": {"channel": "synthetic-distribution", "fixture": true}
+    },
+    {
+      "request_id": "req-accept-device-deny",
+      "developer_id": "dev.synthetic.publisher",
+      "application_id": "app.synthetic.market",
+      "application_version": "2.4.0",
+      "agent_identity": "agent.synthetic.001",
+      "capability": "calendar.read",
+      "region": "CN",
+      "requested_at": "2026-11-12T08:10:00Z",
+      "device": {
+        "device_id": "device-synthetic-unmanaged",
+        "manufacturer": "Northstar",
+        "model": "N2",
+        "os_family": "AuroraOS",
+        "security_patch": "2026-11-01",
+        "managed": false
+      },
+      "attributes": {"channel": "synthetic-distribution", "fixture": true}
+    }
+  ],
+  "expected_statuses": {
+    "req-accept-allow": "allow",
+    "req-accept-explicit-deny": "deny",
+    "req-accept-device-deny": "deny"
+  }
+}
